@@ -1,21 +1,21 @@
 ---
 
 galaxy_info:
+  role_name: picapsule
+  namespace: marcomc
   author: Marco Massari Calderone
-  description: Ansible role to setup a PiCapsule RaspberryPi system that works as Apple Time Capsule for Time Machine backups
-
-  company: MarcoMC
-  license: GPL-2.0-or-later
+  description: Ansible role to configure Raspberry Pi as Apple Time Capsule
+  license: MIT
   min_ansible_version: "2.9"
-
   platforms:
     - name: Debian
       versions:
-        - bookworm
-
+        - all
   galaxy_tags:
-    - picapsule
-    - raspberrypi
+    - raspberry
+    - timemachine
+    - backup
+    - apple
     - timecapsule
 
 dependencies: []

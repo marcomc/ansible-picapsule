@@ -1,8 +1,8 @@
 ---
 - name: Check device
   ansible.builtin.import_tasks: check_device.yml
-- name: Check dependencies
-  ansible.builtin.import_tasks: check_dependencies.yml
+- name: Install dependencies
+  ansible.builtin.import_tasks: install_dependencies.yml
 - name: Gather user information
   ansible.builtin.import_tasks: gather_user_info.yml
 - name: Format disk to exFAT
@@ -13,22 +13,3 @@
   ansible.builtin.import_tasks: configure_netatalk.yml
 - name: Enable restart script
   ansible.builtin.import_tasks: enable_restart_script.yml
-
-- name: Install dependencies
-  ansible.builtin.package:
-    name: "{{ picapsule_dependencies }}"
-    state: present
-
-- name: Create mount point
-  ansible.builtin.file:
-    path: "{{ picapsule_mount_point }}"
-    state: directory
-    owner: "{{ picapsule_user }}"
-    group: "{{ picapsule_user }}"
-
-- name: Mount device
-  ansible.builtin.mount:
-    path: "{{ picapsule_mount_point }}"
-    src: "/dev/{{ picapsule_device }}"
-    fstype: exfat
-    state: mounted
