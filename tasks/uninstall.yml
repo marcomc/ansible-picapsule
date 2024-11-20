@@ -1,0 +1,30 @@
+---
+- name: Disable and remove restart-netatalk.service
+  ansible.builtin.systemd:
+    name: restart-netatalk.service
+    enabled: false
+    state: stopped
+
+- name: Remove restart-netatalk.service file
+  ansible.builtin.file:
+    path: /etc/systemd/system/restart-netatalk.service
+    state: absent
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Remove netatalk configuration
+  ansible.builtin.lineinfile:
+    path: /etc/netatalk/afp.conf
+    state: absent
+    regexp: '^\[PiCapsule\]'
+
+- name: Uninstall utilities
+  ansible.builtin.package:
+    name:
+      - exfat-fuse
+      - exfat-utils
+      - netatalk
+    state: absent
+    purge: true

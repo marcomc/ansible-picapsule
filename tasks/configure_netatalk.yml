@@ -1,0 +1,10 @@
+---
+- name: Configure netatalk
+  ansible.builtin.blockinfile:
+    path: /etc/netatalk/afp.conf
+    block: |
+      [PiCapsule]
+      path = {{ picapsule_mount_point }}
+      time machine = yes
+      valid users = @{{ picapsule_user }}
+      unix priv = no

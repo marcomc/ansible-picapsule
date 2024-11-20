@@ -1,0 +1,11 @@
+---
+- name: Check for required dependencies
+  ansible.builtin.package:
+    name: "{{ picapsule_dependencies }}"
+    state: present
+  loop:
+    - curl
+    - systemd
+    - exfat-fuse
+    - exfat-utils
+    - netatalk

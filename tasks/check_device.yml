@@ -1,0 +1,10 @@
+---
+- name: Check if device is recognized by the operating system
+  ansible.builtin.stat:
+    path: "/dev/{{ picapsule_device }}"
+  register: device_stat
+
+- name: Fail if device is not recognized
+  ansible.builtin.fail:
+    msg: "Device /dev/{{ picapsule_device }} is not recognized by the operating system."
+  when: not device_stat.stat.exists

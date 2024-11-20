@@ -1,0 +1,33 @@
+---
+- name: Create restart-netatalk.service file
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/restart-netatalk.service
+    content: |
+      [Unit]
+      Description=Restart Netatalk Service
+      After=multi-user.target
+
+      [Service]
+      Type=idle
+      ExecStart=/bin/bash -c "sleep 10; echo 'restart netatalk service'; sudo service netatalk restart"
+
+      [Install]
+      WantedBy=multi-user.target
+    mode: '0644'
+    force: false
+
+- name: Enable restart-netatalk.service
+  ansible.builtin.systemd:
+    name: restart-netatalk.service
+    enabled: true
+
+- name: Start restart-netatalk.service
+  ansible.builtin.systemd:
+    name: restart-netatalk.service
+    state: started
+  register: restart_netatalk_service
+  changed_when: false
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true

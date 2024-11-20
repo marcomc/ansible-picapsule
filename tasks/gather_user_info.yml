@@ -1,0 +1,10 @@
+---
+- name: Get picapsule_user user information
+  ansible.builtin.user:
+    name: "{{ picapsule_user }}"
+  register: picapsule_user_info
+
+- name: Set UID and GID facts for picapsule_user
+  ansible.builtin.set_fact:
+    picapsule_user_uid: "{{ picapsule_user_info.uid }}"
+    picapsule_user_gid: "{{ picapsule_user_info.group }}"
