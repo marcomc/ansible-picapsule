@@ -1,11 +1,4 @@
 ---
-picapsule_dependencies:
-  - curl
-  - systemd
-  - exfat-fuse
-  - exfat-utils
-  - netatalk
-
 picapsule_device: "sda1"
 picapsule_disk_name: "picapsule1"
 picapsule_user: "picapsule"

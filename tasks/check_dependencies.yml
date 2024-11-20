@@ -1,7 +1,7 @@
 ---
 - name: Check for required dependencies
   ansible.builtin.package:
-    name: "{{ picapsule_dependencies }}"
+    name: "{{ item }}"
     state: present
   loop:
     - curl
