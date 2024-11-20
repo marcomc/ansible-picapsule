@@ -5,7 +5,7 @@ galaxy_info:
   namespace: marcomc
   author: Marco Massari Calderone
   description: Ansible role to configure Raspberry Pi as Apple Time Capsule
-  license: MIT
+  license: GPL-2.0-or-later
   min_ansible_version: "2.9"
   platforms:
     - name: Debian
