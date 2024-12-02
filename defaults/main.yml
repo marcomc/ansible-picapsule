@@ -1,5 +1,5 @@
 ---
-picapsule_device: "sda1"
-picapsule_disk_name: "picapsule1"
-picapsule_user: "picapsule"
-picapsule_mount_point: "/media/{{ picapsule_user }}/{{ picapsule_disk_name }}"
+timecapsule_device: "sda1"
+timecapsule_disk_name: "timecapsule1"
+timecapsule_user: "timecapsule"
+timecapsule_mount_point: "/media/{{ timecapsule_user }}/{{ timecapsule_disk_name }}"

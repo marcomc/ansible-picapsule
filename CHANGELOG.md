@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial release of ansible-picapsule role
+- Initial release of ansible-role-timecapsule role
 - Support for configuring Raspberry Pi as Apple Time Capsule
 - Automatic disk formatting with exFAT filesystem
 - Automatic mounting configuration
@@ -22,9 +22,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Configuration Options
 
-- `picapsule_device`: Device name configuration
-- `picapsule_disk_name`: Disk name configuration
-- `picapsule_user`: User ownership configuration
-- `picapsule_mount_point`: Mount point configuration
+- `timecapsule_device`: Device name configuration
+- `timecapsule_disk_name`: Disk name configuration
+- `timecapsule_user`: User ownership configuration
+- `timecapsule_mount_point`: Mount point configuration
 
-[1.0.0]: https://github.com/marcomc/ansible-picapsule/releases/tag/v1.0.0 
+[1.0.0]: https://github.com/marcomc/ansible-role-timecapsule/releases/tag/v1.0.0

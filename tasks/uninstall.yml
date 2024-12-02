@@ -18,7 +18,7 @@
   ansible.builtin.lineinfile:
     path: /etc/netatalk/afp.conf
     state: absent
-    regexp: '^\[PiCapsule\]'
+    regexp: '^\[TimeCapsule\]'
 
 - name: Uninstall utilities
   ansible.builtin.package:

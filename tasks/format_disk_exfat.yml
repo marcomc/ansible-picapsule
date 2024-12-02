@@ -1,13 +1,13 @@
 ---
 - name: Check if disk is already formatted with exFAT
   ansible.builtin.command:
-    cmd: blkid /dev/{{ picapsule_device }}
+    cmd: blkid /dev/{{ timecapsule_device }}
   register: blkid_output
   changed_when: false
 
 - name: Format disk with exFAT
   ansible.builtin.command:
-    cmd: mkfs.exfat /dev/{{ picapsule_device }}
+    cmd: mkfs.exfat /dev/{{ timecapsule_device }}
   register: command_output
   changed_when: command_output.rc != 0
   when: "'TYPE=\"exfat\"' not in blkid_output.stdout"

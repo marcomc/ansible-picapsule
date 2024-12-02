@@ -1,16 +1,16 @@
 ---
 
 - name: Get list of mount points related to the device
-  ansible.builtin.command: lsblk -nr -o MOUNTPOINT /dev/{{ picapsule_device }}
+  ansible.builtin.command: lsblk -nr -o MOUNTPOINT /dev/{{ timecapsule_device }}
   register: mount_points_list
   changed_when: false
 
 - name: Ensure device is not mounted with a different mount point
-  when: mount_points_list.stdout_lines | length > 0 and mount_points_list.stdout_lines[0] != picapsule_mount_point
+  when: mount_points_list.stdout_lines | length > 0 and mount_points_list.stdout_lines[0] != timecapsule_mount_point
   block:
     - name: Unmounting device...
       ansible.builtin.debug:
-        msg: "Unmounting device {{ picapsule_device }} from {{ mount_points_list.stdout_lines[0] }}"
+        msg: "Unmounting device {{ timecapsule_device }} from {{ mount_points_list.stdout_lines[0] }}"
 
     - name: Unmount and remove the undesired mount points
       ansible.posix.mount:
@@ -19,9 +19,9 @@
 
 - name: Configure fstab for automount
   ansible.posix.mount:
-    path: "{{ picapsule_mount_point }}"
-    src: "/dev/{{ picapsule_device }}"
+    path: "{{ timecapsule_mount_point }}"
+    src: "/dev/{{ timecapsule_device }}"
     fstype: exfat
-    opts: "defaults,uid={{ picapsule_user_uid }},gid={{ picapsule_user_gid }},umask=002"
-    state: "{{ 'present' if mount_points_list.stdout_lines | length > 0 and mount_points_list.stdout_lines[0] == picapsule_mount_point else 'mounted' }}"
+    opts: "defaults,uid={{ timecapsule_user_uid }},gid={{ timecapsule_user_gid }},umask=002"
+    state: "{{ 'present' if mount_points_list.stdout_lines | length > 0 and mount_points_list.stdout_lines[0] == timecapsule_mount_point else 'mounted' }}"
   register: mount_output
